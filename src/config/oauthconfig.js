@@ -11,7 +11,7 @@ const oauthconfig = {
         ],
         "redirectSignIn": "https://master.d1i2ha05cazkpa.amplifyapp.com/signin/",
         "redirectSignOut": "https://master.d1i2ha05cazkpa.amplifyapp.com/signout/",
-  "responseType": "token"
+  "responseType": "code"
     
 }
 export {oauthconfig};
