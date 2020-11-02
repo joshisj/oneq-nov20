@@ -1,0 +1,29 @@
+type Request @model {
+  id: ID!
+  accountLink: String!
+  accountName: String!
+  activityRequester: String!
+  accountOpportunity: String!
+  activityTitle: String!
+  activityType: String!
+  activityTopic: String!
+  activityDomain: String!
+  activityComplexity: String!
+  activityDetails: String
+  activityFromDate: String!
+  activityToDate: String!
+  activityLocation: String!
+  activityInteractionType: String!
+  activityLanguage: String
+  activityAM: String
+  activityrequestedSA: String
+  activityRegion: String!
+  activitySubregion: String!
+  activityTerritory: String!
+  activityWatchers: String
+  activitySubtopic: String
+  activityBusinessUnit: String! 
+  activityTerritorySegment: String! 
+  activityGeo: String!
+  activityRoute: String!
+}

@@ -1,0 +1,14 @@
+{
+    "CreateAPIKey": 0,
+    "AppSyncApiName": "oneqprod",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authoneqprod84170006",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "amplify-oneqprod-oneqprod-191830-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/cf67e0e80a79d7c837c84907cae83e50ad53c546"
+}

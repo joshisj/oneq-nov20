@@ -1,0 +1,273 @@
+type Request {
+  id: ID!
+  accountLink: String!
+  accountName: String!
+  activityRequester: String!
+  accountOpportunity: String!
+  activityTitle: String!
+  activityType: String!
+  activityTopic: String!
+  activityDomain: String!
+  activityComplexity: String!
+  activityDetails: String
+  activityFromDate: String!
+  activityToDate: String!
+  activityLocation: String!
+  activityInteractionType: String!
+  activityLanguage: String
+  activityAM: String
+  activityrequestedSA: String
+  activityRegion: String!
+  activitySubregion: String!
+  activityTerritory: String!
+  activityWatchers: String
+  activitySubtopic: String
+  activityBusinessUnit: String!
+  activityTerritorySegment: String!
+  activityGeo: String!
+  activityRoute: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelRequestConnection {
+  items: [Request]
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelRequestFilterInput {
+  id: ModelIDInput
+  accountLink: ModelStringInput
+  accountName: ModelStringInput
+  activityRequester: ModelStringInput
+  accountOpportunity: ModelStringInput
+  activityTitle: ModelStringInput
+  activityType: ModelStringInput
+  activityTopic: ModelStringInput
+  activityDomain: ModelStringInput
+  activityComplexity: ModelStringInput
+  activityDetails: ModelStringInput
+  activityFromDate: ModelStringInput
+  activityToDate: ModelStringInput
+  activityLocation: ModelStringInput
+  activityInteractionType: ModelStringInput
+  activityLanguage: ModelStringInput
+  activityAM: ModelStringInput
+  activityrequestedSA: ModelStringInput
+  activityRegion: ModelStringInput
+  activitySubregion: ModelStringInput
+  activityTerritory: ModelStringInput
+  activityWatchers: ModelStringInput
+  activitySubtopic: ModelStringInput
+  activityBusinessUnit: ModelStringInput
+  activityTerritorySegment: ModelStringInput
+  activityGeo: ModelStringInput
+  activityRoute: ModelStringInput
+  and: [ModelRequestFilterInput]
+  or: [ModelRequestFilterInput]
+  not: ModelRequestFilterInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+type Query {
+  getRequest(id: ID!): Request
+  listRequests(filter: ModelRequestFilterInput, limit: Int, nextToken: String): ModelRequestConnection
+}
+
+input CreateRequestInput {
+  id: ID
+  accountLink: String!
+  accountName: String!
+  activityRequester: String!
+  accountOpportunity: String!
+  activityTitle: String!
+  activityType: String!
+  activityTopic: String!
+  activityDomain: String!
+  activityComplexity: String!
+  activityDetails: String
+  activityFromDate: String!
+  activityToDate: String!
+  activityLocation: String!
+  activityInteractionType: String!
+  activityLanguage: String
+  activityAM: String
+  activityrequestedSA: String
+  activityRegion: String!
+  activitySubregion: String!
+  activityTerritory: String!
+  activityWatchers: String
+  activitySubtopic: String
+  activityBusinessUnit: String!
+  activityTerritorySegment: String!
+  activityGeo: String!
+  activityRoute: String!
+}
+
+input UpdateRequestInput {
+  id: ID!
+  accountLink: String
+  accountName: String
+  activityRequester: String
+  accountOpportunity: String
+  activityTitle: String
+  activityType: String
+  activityTopic: String
+  activityDomain: String
+  activityComplexity: String
+  activityDetails: String
+  activityFromDate: String
+  activityToDate: String
+  activityLocation: String
+  activityInteractionType: String
+  activityLanguage: String
+  activityAM: String
+  activityrequestedSA: String
+  activityRegion: String
+  activitySubregion: String
+  activityTerritory: String
+  activityWatchers: String
+  activitySubtopic: String
+  activityBusinessUnit: String
+  activityTerritorySegment: String
+  activityGeo: String
+  activityRoute: String
+}
+
+input DeleteRequestInput {
+  id: ID
+}
+
+type Mutation {
+  createRequest(input: CreateRequestInput!, condition: ModelRequestConditionInput): Request
+  updateRequest(input: UpdateRequestInput!, condition: ModelRequestConditionInput): Request
+  deleteRequest(input: DeleteRequestInput!, condition: ModelRequestConditionInput): Request
+}
+
+input ModelRequestConditionInput {
+  accountLink: ModelStringInput
+  accountName: ModelStringInput
+  activityRequester: ModelStringInput
+  accountOpportunity: ModelStringInput
+  activityTitle: ModelStringInput
+  activityType: ModelStringInput
+  activityTopic: ModelStringInput
+  activityDomain: ModelStringInput
+  activityComplexity: ModelStringInput
+  activityDetails: ModelStringInput
+  activityFromDate: ModelStringInput
+  activityToDate: ModelStringInput
+  activityLocation: ModelStringInput
+  activityInteractionType: ModelStringInput
+  activityLanguage: ModelStringInput
+  activityAM: ModelStringInput
+  activityrequestedSA: ModelStringInput
+  activityRegion: ModelStringInput
+  activitySubregion: ModelStringInput
+  activityTerritory: ModelStringInput
+  activityWatchers: ModelStringInput
+  activitySubtopic: ModelStringInput
+  activityBusinessUnit: ModelStringInput
+  activityTerritorySegment: ModelStringInput
+  activityGeo: ModelStringInput
+  activityRoute: ModelStringInput
+  and: [ModelRequestConditionInput]
+  or: [ModelRequestConditionInput]
+  not: ModelRequestConditionInput
+}
+
+type Subscription {
+  onCreateRequest: Request @aws_subscribe(mutations: ["createRequest"])
+  onUpdateRequest: Request @aws_subscribe(mutations: ["updateRequest"])
+  onDeleteRequest: Request @aws_subscribe(mutations: ["deleteRequest"])
+}

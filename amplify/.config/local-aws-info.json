@@ -1,0 +1,7 @@
+{
+    "oneqprod": {
+        "configLevel": "project",
+        "useProfile": true,
+        "profileName": "gitoneq"
+    }
+}
