@@ -1,7 +1,7 @@
 {
-    "oneqprod": {
+    "sampledev": {
         "configLevel": "project",
         "useProfile": true,
-        "profileName": "gitoneq"
+        "profileName": "amplify-us-east-2-sid"
     }
 }

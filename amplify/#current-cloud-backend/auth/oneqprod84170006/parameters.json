@@ -1,6 +1,6 @@
 {
     "identityPoolName": "oneqprod84170006_identitypool_84170006",
-    "allowUnauthenticatedIdentities": true,
+    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "oneqpr84170006",
     "userPoolName": "oneqprod84170006_userpool_84170006",
     "autoVerifiedAttributes": [
@@ -45,7 +45,12 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
+    "useDefault": "defaultSocial",
     "userPoolGroupList": [],
-    "dependsOn": []
+    "dependsOn": [],
+    "hostedUI": true,
+    "hostedUIDomainName": "oneqprodec842553-ec842553",
+    "authProvidersUserPool": [],
+    "hostedUIProviderMeta": "[]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://master.d1i2ha05cazkpa.amplifyapp.com/signin/\"],\"LogoutURLs\":[\"https://master.d1i2ha05cazkpa.amplifyapp.com/signout/\"]}"
 }

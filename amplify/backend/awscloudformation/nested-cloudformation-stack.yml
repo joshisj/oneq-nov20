@@ -71,10 +71,10 @@
 		"authoneqprod84170006": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/amplify-oneqprod-oneqprod-191830-deployment/amplify-cfn-templates/auth/oneqprod84170006-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/amplify-oneqprod-sampledev-163137-deployment/amplify-cfn-templates/auth/oneqprod84170006-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "oneqprod84170006_identitypool_84170006",
-					"allowUnauthenticatedIdentities": true,
+					"allowUnauthenticatedIdentities": false,
 					"resourceNameTruncated": "oneqpr84170006",
 					"userPoolName": "oneqprod84170006_userpool_84170006",
 					"autoVerifiedAttributes": "email",
@@ -109,26 +109,32 @@
 							"Arn"
 						]
 					},
-					"useDefault": "default",
+					"useDefault": "defaultSocial",
 					"userPoolGroupList": "",
 					"dependsOn": "",
-					"env": "oneqprod"
+					"hostedUI": true,
+					"hostedUIDomainName": "oneqprodec842553-ec842553",
+					"authProvidersUserPool": "",
+					"hostedUIProviderMeta": "[]",
+					"oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://master.d1i2ha05cazkpa.amplifyapp.com/signin/\"],\"LogoutURLs\":[\"https://master.d1i2ha05cazkpa.amplifyapp.com/signout/\"]}",
+					"hostedUIProviderCreds": "[]",
+					"env": "sampledev"
 				}
 			}
 		},
 		"functionS3Trigger0100cf91": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/amplify-oneqprod-oneqprod-191830-deployment/amplify-cfn-templates/function/S3Trigger0100cf91-cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/amplify-oneqprod-sampledev-163137-deployment/amplify-cfn-templates/function/S3Trigger0100cf91-cloudformation-template.json",
 				"Parameters": {
-					"env": "oneqprod"
+					"env": "sampledev"
 				}
 			}
 		},
 		"storageoneqprods3": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/amplify-oneqprod-oneqprod-191830-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/amplify-oneqprod-sampledev-163137-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
 				"Parameters": {
 					"bucketName": "oneq-prod",
 					"authPolicyName": "s3_amplify_875973b9",
@@ -173,14 +179,14 @@
 							"Outputs.LambdaExecutionRole"
 						]
 					},
-					"env": "oneqprod"
+					"env": "sampledev"
 				}
 			}
 		},
 		"apioneqprod": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/amplify-oneqprod-oneqprod-191830-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/amplify-oneqprod-sampledev-163137-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"Parameters": {
 					"CreateAPIKey": 0,
 					"AppSyncApiName": "oneqprod",
@@ -192,9 +198,9 @@
 							"Outputs.UserPoolId"
 						]
 					},
-					"S3DeploymentBucket": "amplify-oneqprod-oneqprod-191830-deployment",
-					"S3DeploymentRootKey": "amplify-appsync-files/cf67e0e80a79d7c837c84907cae83e50ad53c546",
-					"env": "oneqprod"
+					"S3DeploymentBucket": "amplify-oneqprod-sampledev-163137-deployment",
+					"S3DeploymentRootKey": "amplify-appsync-files/d246d5987f501d8722e9bab3c01bc737f855cf79",
+					"env": "sampledev"
 				}
 			}
 		},
