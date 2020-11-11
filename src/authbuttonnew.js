@@ -1,141 +1,75 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from 'react';
+import Amplify, { Auth, Hub } from 'aws-amplify';
+//import awsconfig from '../config/awsconfig';
+import RequestForm from "./saRequestForm";
 
-import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
-import { API, graphqlOperation } from "aws-amplify";
-import RequestForm from './saRequestForm'
-import AuthButton from './components/authbutton'
+//Amplify.configure(awsconfig);
 
-const listTodos = `query listTodos {
-  listTodos{
-    items{
-    id
-    accountLink
-    accountName
-    activityRequester
-    accountOpportunity
-    activityTitle
-    activityType
-    activityTopic
-    activityDomain
-    activityComplexity
-    activityDetails
-    activityFromDate
-    activityToDate
-    activityLocation
-    activityInteractionType
-    activityLanguage
-    activityAM
-    activityrequestedSA
-    activityPriority
-    activityRegion
-    activitySubregion
-    activityTerritory
-    activityWatchers
-    activitySubtopic
+function AuthButton() {
+    const [user, setUser] = useState(null);
+    const [creds, setCreds] = useState(null)
+
+    useEffect(() => {
+        Hub.listen('auth', ({ payload: { event, data } }) => {
+            console.log("Received Event")
+            console.log(event)
+            switch (event) {
+                case 'signIn':
+                    console.log('signIn event detected')
+                    console.log(data);
+                    break
+                case 'cognitoHostedUI':
+                    console.log('cognitoHostedUI event detected')
+                    console.log(data)
+                    getUser().then(userData => setUser(userData));
+                    break;
+                case 'signOut':
+                    setUser(null);
+                    break;
+                case 'signIn_failure':
+                    console.log("Normal sign in failure")
+                    break
+                case 'cognitoHostedUI_failure':
+                    console.log('Sign in failure', data);
+                    break;
+                default:
+                    console.log('No matching cases in auth flow')
+                    break
+            }
+        });
+
+        getUser().then(userData => setUser(userData));
+    }, []);
+
+    function getUser() {
+        return Auth.currentAuthenticatedUser()
+            .then(userData => {
+                console.log('User Data:',userData)
+                // For some reason the identities key, which contains the
+                // username is a string, not an object, so we're going to
+                // fix that when the user is retrieved
+                const identities = JSON.parse(userData.attributes.identities)
+                console.log(identities)
+                userData.attributes.identitiesList = identities
+                return userData
+            })
+            .catch(() => console.log('Not signed in'));
     }
-  }
-}`;
 
-const addTodo = `mutation createTodo($name:String! $description:String! $activityRequester:String! $activitySubtopic:String! $activityWatchers:String! $activityTerritory:String! $activitySubregion:String! $activityRegion:String! $activityPriority:String! $activityrequestedSA:String! $activityAM:String! $activityLanguage:String! $activityInteractionType:String! $activityLocation:String! $activityToDate:String! $activityFromDate:String! $activityDetails:String! $accountOpportunity:String! $activityTitle:String! $activityType:String! $activityTopic:String! $activityDomain:String! $activityComplexity:String!) {
-  createTodo(input:{
-    accountLink:$name
-    accountName:$description
-    activityRequester:$activityRequester
-    accountOpportunity:$accountOpportunity
-    activityTitle:$activityTitle
-    activityType:$activityType
-    activityTopic:$activityTopic
-    activityDomain:$activityDomain
-    activityComplexity:$activityComplexity
-    activityDetails:$activityDetails
-    activityFromDate:$activityFromDate
-    activityToDate:$activityToDate
-    activityLocation:$activityLocation
-    activityInteractionType:$activityInteractionType
-    activityLanguage:$activityLanguage
-    activityAM:$activityAM
-    activityrequestedSA:$activityrequestedSA
-    activityPriority:$activityPriority
-    activityRegion:$activityRegion
-    activitySubregion:$activitySubregion
-    activityTerritory:$activityTerritory
-    activityWatchers:$activityWatchers
-    activitySubtopic:$activitySubtopic
-  }){
-    id
-    accountLink
-    accountName
-    activityRequester
-    accountOpportunity
-    activityTitle
-    activityType
-    activityTopic
-    activityDomain
-    activityComplexity
-    activityDetails
-    activityFromDate
-    activityToDate
-    activityLocation
-    activityInteractionType
-    activityLanguage
-    activityAM
-    activityrequestedSA
-    activityPriority
-    activityRegion
-    activitySubregion
-    activityTerritory
-    activityWatchers
-    activitySubtopic
-  }
-}`;
-
-class App extends Component {
-    todoMutation = async () => {
-        const todoDetails = {
-            name: "Party!",
-            description: "Amplify CLI!",
-            activityRequester:"ac",
-            accountOpportunity:"ac",
-            activityTitle:"ac",
-            activityType:"ac",
-            activityTopic:"ac",
-            activityDomain:"ac",
-            activityComplexity:"ac",
-            activityDetails:"ac",
-            activityFromDate:"ac",
-            activityToDate:"ac",
-            activityLocation:"ac",
-            activityInteractionType:"ac",
-            activityLanguage:"ac",
-            activityAM:"ac",
-            activityrequestedSA:"ac",
-            activityPriority:"ac",
-            activityRegion:"ac",
-            activitySubregion:"ac",
-            activityTerritory:"ac",
-            activityWatchers:"ac",
-            activitySubtopic:"ac"
-        };
-
-        const newTodo = await API.graphql(graphqlOperation(addTodo, todoDetails));
-        alert(JSON.stringify(newTodo));
-    };
-
-    listQuery = async () => {
-        console.log("listing todos");
-        const allTodos = await API.graphql(graphqlOperation(listTodos));
-        alert(JSON.stringify(allTodos));
-    };
-
-
-    render() {
-        return (
-            <div>
-                <AuthButton/>
-            </div>
-        );
-    }
+    return (
+        <div>
+            {user ? (
+                <div >
+                    <RequestForm/>
+                    <button className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" onClick={() => Auth.signOut()}>Sign Out</button>
+                </div>
+            ) : (
+                <div>
+                    <button className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" onClick={() => Auth.federatedSignIn()}>Sign In</button>
+                </div>
+            )}
+        </div>
+    );
 }
 
-export default App
-//export default withAuthenticator(App, true);
+export default AuthButton;
