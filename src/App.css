@@ -1,9 +1,16 @@
-.demo{
-    fontFamily: 'sans-Serif';
+.signintitle{
+    fontFamily: sans-Serif;
     text-align: center;
     padding-top:50px;
     font-size: 45px;
-    color : gray;
+    color:gray;
+}
+.saformtitle{
+    fontFamily: 'sans-Serif';
+    color: gray;
+    text-align: center;
+    padding-top:50px;
+    font-size: 45px;
 }
 .container {
     height: 200px;
@@ -18,11 +25,11 @@
     font-weight: bold;
     padding-top: 50px;
 }
-.stylee{
-    margin-left: 100px;
-    margin-right: 100px;
+.siginpage{
+    margin-left: 400px;
+    margin-right: 400px;
     margin-bottom: 50px;
-    margin-top: 50px;
+    margin-top: 500px;
     border: 3px solid orange;
     padding: 20px;
     background: #DCDCDC;

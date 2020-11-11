@@ -61,12 +61,13 @@ function AuthButton() {
             {user ? (
                 <div >
                     <RequestForm/>
-
                 </div>
             ) : (
-                <div class='stylee'>
-                    <h1 className='demo'>OneQ</h1>
-                    <button className='sigin' onClick={() => Auth.federatedSignIn()}>Sign In</button>
+                <div class='siginpage'>
+                    <h1 className='signintitle'>Solutions Architect Activity Request</h1>
+                    <br></br>
+                    <br></br>
+                    <button className='sigin' onClick={() => Auth.federatedSignIn()}>Sign In with Midway</button>
                     <p>Please give the form a couple seconds to load after signing in</p>
                 </div>
             )}

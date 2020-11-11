@@ -104,7 +104,7 @@ function reloadpage(){
 export default function RequestForm() {
 return (
         <form>
-            <h1 className='demo'>Solutions Architect Activity Request</h1>
+            <h1 className='saformtitle'>Solutions Architect Activity Request</h1>
             <AutoForm style={style} schema={RequestSchema} onSubmit={doc => handleAdd(doc)}>
                 <br></br>
                 <Form.Group widths="equal">
