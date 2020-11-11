@@ -47,8 +47,6 @@ const style = {
         button:{
         background: 'orange',
         padding: '15px 32px',
-        "margin-left": '40%',
-
     },
     contact:{
         "text-align": "center"
@@ -161,3 +159,6 @@ return (
         </form>
     );
 }
+
+//align submit button to center
+// "margin-left": '40%',
