@@ -5,10 +5,10 @@ const awsmobile = {
     "aws_project_region": "us-east-2",
     "aws_cognito_identity_pool_id": "us-east-2:48ffdfb8-ff3e-4d9f-835b-7529c363cf6a",
     "aws_cognito_region": "us-east-2",
-    "aws_user_pools_id": "us-east-2_NDhOXTT6E",
-    "aws_user_pools_web_client_id": "4e9sdbihdktlaovjqa15b8hlee",
+    "aws_user_pools_id": "us-east-2_s448eQQGd",
+    "aws_user_pools_web_client_id": "3usnmc106hgso0tof2vl16i98s",
     "oauth": {
-        "domain": "oneqprodec842553-ec842553-sampledev.auth.us-east-2.amazoncognito.com",
+        "domain": "oneqtest.auth.us-east-2.amazoncognito.com",
         "scope": [
             "phone",
             "email",
@@ -16,9 +16,9 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "https://master.d1i2ha05cazkpa.amplifyapp.com/signin/",
-        "redirectSignOut": "https://master.d1i2ha05cazkpa.amplifyapp.com/signout/",
-        "responseType": "code"
+        "redirectSignIn": "http://localhost:3000/",
+        "redirectSignOut": "http://localhost:3000/",
+        "responseType": "token"
     },
     "federationTarget": "COGNITO_USER_POOLS",
     "aws_user_files_s3_bucket": "oneq-prod163137-sampledev",

@@ -14,7 +14,7 @@ import {
     LongTextField,
     SubmitField
 } from 'uniforms-semantic';
-
+import './App.css'
 // Get the query parameters and default them into the form
 let search = window.location.search;
 let params = new URLSearchParams(search);
@@ -46,7 +46,9 @@ const style = {
     },
         button:{
         background: 'orange',
-        "padding": '15px 32px',
+        padding: '15px 32px',
+        "margin-left": '40%',
+
     },
     contact:{
         "text-align": "center"
@@ -104,7 +106,7 @@ function reloadpage(){
 export default function RequestForm() {
 return (
         <form>
-            <h1 style={style.titleStyle}>Solutions Architect Activity Request</h1>
+            <h1 className='demo'>Solutions Architect Activity Request</h1>
             <AutoForm style={style} schema={RequestSchema} onSubmit={doc => handleAdd(doc)}>
                 <br></br>
                 <Form.Group widths="equal">
@@ -158,5 +160,4 @@ return (
             <p></p>    
         </form>
     );
-
 }
