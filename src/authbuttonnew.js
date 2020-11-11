@@ -61,11 +61,13 @@ function AuthButton() {
             {user ? (
                 <div >
                     <RequestForm/>
-                    <button className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" onClick={() => Auth.signOut()}>Sign Out</button>
+
                 </div>
             ) : (
-                <div>
-                    <button className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" onClick={() => Auth.federatedSignIn()}>Sign In</button>
+                <div class='stylee'>
+                    <h1 className='demo'>OneQ</h1>
+                    <button className='sigin' onClick={() => Auth.federatedSignIn()}>Sign In</button>
+                    <p>Please give the form a couple seconds to load after signing in</p>
                 </div>
             )}
         </div>
@@ -73,3 +75,6 @@ function AuthButton() {
 }
 
 export default AuthButton;
+
+//sign out button
+//<button className='sigin' onClick={() => Auth.signOut()}>Sign Out</button>
