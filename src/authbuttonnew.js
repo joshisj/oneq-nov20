@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { API, graphqlOperation } from "aws-amplify";
 import RequestForm from './saRequestForm'
-import AuthButton from './authbuttonnew'
+import AuthButton from './components/authbutton'
 
 const listTodos = `query listTodos {
   listTodos{
