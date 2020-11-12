@@ -5,7 +5,13 @@
     "userPoolWebClientId": "3usnmc106hgso0tof2vl16i98s",
     "identityPoolId": "us-east-2:48ffdfb8-ff3e-4d9f-835b-7529c363cf6a",
     "mandatorySignIn": false,
-    "redirectSignIn": "http://localhost:3000/",
-    "redirectSignOut": "http://localhost:3000/"
-  }
+    "redirectSignIn": "https://master.d1i2ha05cazkpa.amplifyapp.com/",
+    "redirectSignOut": "https://master.d1i2ha05cazkpa.amplifyapp.com/"
+  },
+  "federationTarget": "COGNITO_USER_POOLS",
+  "aws_user_files_s3_bucket": "oneq-prod163137-sampledev",
+  "aws_user_files_s3_bucket_region": "us-east-2",
+  "aws_appsync_graphqlEndpoint": "https://xm2z3gk7t5denhrv3lkpa3xujm.appsync-api.us-east-2.amazonaws.com/graphql",
+  "aws_appsync_region": "us-east-2",
+  "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS"
 }

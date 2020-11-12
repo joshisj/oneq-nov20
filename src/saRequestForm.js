@@ -89,7 +89,7 @@ var handleAdd = (doc) => {
 
     //Alert confirming form submitted
     //alert("Thank you. The form was submitted");
-    reloadpage();
+    //reloadpage();
 }
 
 function reloadpage(){
