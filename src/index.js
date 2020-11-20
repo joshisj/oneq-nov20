@@ -10,6 +10,7 @@ import Amplify,  { Auth } from 'aws-amplify';
 import {oauthconfig, oauthconfigLocal} from './config/oauthconfig';
 import awsconfig from './config/awsconfig';
 Amplify.configure(awsconfig);
+oauthconfig.redirectSignIn = window.location.href;
 Auth.configure({ oauth: oauthconfig });
 //till here
 
